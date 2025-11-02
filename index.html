@@ -1,0 +1,2431 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>精工管件 - 专业水暖与消防管件系统供应商</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #0d4d8d;
+            --accent: #00a0e3;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --gray: #6c757d;
+            --primary-blue: #003366;
+            --fire-red: #CC0000;
+            --safety-green: #00CC66;
+            --dark-steel: #2c3e50;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --light-gray: #e9ecef;
+            --metal-silver: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f4f8;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 语言切换样式 - 移除英文按钮后简化 */
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        
+        .lang-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .lang-btn.active {
+            background: white;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        /* 英文字体样式 */
+        .english-text {
+            font-size: 0.8em;
+            opacity: 0.5;
+            margin-left: 5px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo-subtext {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section - 已修改背景图片 */
+        .hero {
+            background: linear-gradient(rgba(0, 86, 179, 0.85), rgba(13, 77, 141, 0.9)), url('https://space.coze.cn/s/JtMAf1LRnhM/?width_height=4096x3072');
+            background-size: cover;
+            background-position: center bottom;
+            color: white;
+            text-align: center;
+            padding: 150px 20px 250px;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .cta-button:hover {
+            background-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .section-header h2:hover {
+            color: var(--accent);
+        }
+        
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .section-header p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 20px auto 0;
+            font-size: 1.1rem;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Products Section */
+        .products {
+            background-color: var(--light);
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .product-image {
+            height: 220px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 25px;
+        }
+        
+        .product-info h3 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        
+        .product-info p {
+            color: var(--gray);
+            margin-bottom: 15px;
+            min-height: 80px;
+        }
+        
+        .product-features {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .product-features li {
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+        
+        .product-features li:before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--safety-green);
+            margin-right: 10px;
+        }
+        
+        /* Products Grid Section */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card-header {
+            background: var(--primary-blue);
+            color: var(--text-light);
+            padding: 25px;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .product-card-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+        
+        .product-card-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .product-card-header p {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .product-card-body {
+            padding: 25px;
+        }
+        
+        /* 产品图片展示区域 - 已调整为4张图片 */
+        .product-gallery {
+            margin-top: 40px;
+            padding: 30px 0;
+        }
+        
+        .product-gallery-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .product-gallery-header h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 25px;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .gallery-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover .gallery-item-image img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item-name {
+            padding: 15px;
+            text-align: center;
+            background: white;
+        }
+        
+        .gallery-item-name h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .gallery-item-name p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .features-list {
+            list-style: none;
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .features-list li {
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+        
+        .features-list li:before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--safety-green);
+            margin-right: 10px;
+        }
+        
+        .specs {
+            background: var(--metal-silver);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        /* Advantages Section */
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .advantage-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .advantage-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .advantage-icon {
+            font-size: 3.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .advantage-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        /* Information Section */
+        .information {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        .information .section-header h2 {
+            color: white;
+        }
+        
+        .information .section-header p {
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .info-container {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+        }
+        
+        .info-form {
+            flex: 1;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.15);
+            color: var(--text-dark);
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            background: rgba(255,255,255,0.25);
+        }
+        
+        .form-control::placeholder {
+            color: rgba(0,0,0,0.5);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background: #0087c1;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .info-text {
+            flex: 1;
+        }
+        
+        .info-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+        }
+        
+        .info-list {
+            list-style: none;
+        }
+        
+        .info-list li {
+            margin-bottom: 20px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .info-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+        
+        /* Footer */
+                footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.8);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h4 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .contact-info {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .contact-info li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .contact-info li i {
+            position: absolute;
+            left: 0;
+            top: 5px;
+            color: var(--accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.5);
+        }
+        
+        /* 管理员相关样式 */
+        .admin-float-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            cursor: pointer;
+            z-index: 1000;
+        }
+        
+        /* 登录模态框样式 */
+        .login-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .login-modal.active {
+            display: flex;
+        }
+        
+        .login-content {
+            background: white;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .login-header i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .login-header h2 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .login-form .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .login-form label {
+            color: var(--dark);
+        }
+        
+        .login-form .form-control {
+            background: rgba(0,0,0,0.05);
+        }
+        
+        .login-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .login-btn:hover {
+            background: var(--secondary);
+        }
+        
+        .login-error {
+            color: var(--danger);
+            text-align: center;
+            margin-top: 15px;
+            display: none;
+        }
+        
+        .admin-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .admin-modal.active {
+            display: flex;
+        }
+        
+        .admin-content {
+            background: white;
+            width: 90%;
+            max-width: 1200px;
+            border-radius: 10px;
+            padding: 30px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .admin-header-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .admin-header-title i {
+            font-size: 1.8rem;
+        }
+        
+        .admin-header-actions button {
+            background: rgba(0,0,0,0.1);
+            border: none;
+            color: var(--dark);
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .admin-header-actions button:hover {
+            background: rgba(0,0,0,0.2);
+        }
+        
+        .admin-chart {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .close-admin {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+        
+        .admin-data {
+            margin-top: 20px;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        .data-table th, .data-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .data-table th {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .data-table tr:hover {
+            background-color: rgba(0,86,179,0.03);
+        }
+        
+        .download-btn {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+        
+        .download-btn:hover {
+            background-color: #218838;
+        }
+        
+        /* 管理系统样式 */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: var(--light);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .stat-card h3 {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .stat-card .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .stat-card .stat-desc {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-top: 5px;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 20px;
+        }
+        
+        .tab {
+            padding: 12px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .tab.active {
+            border-bottom-color: var(--accent);
+            color: var(--primary);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .filter-container {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .filter-group label {
+            font-weight: 500;
+            color: var(--gray);
+        }
+        
+        .filter-group select, .filter-group input {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .chart-container {
+            height: 300px;
+            margin-bottom: 30px;
+        }
+        
+        .detail-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: var(--gray);
+            cursor: pointer;
+        }
+        
+        .modal-header {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .modal-header h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .detail-item {
+            margin-bottom: 10px;
+        }
+        
+        .detail-label {
+            font-weight: 500;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .detail-value {
+            font-weight: 500;
+        }
+        
+        .detail-full {
+            grid-column: 1 / -1;
+        }
+        
+        .action-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .view-btn {
+            background-color: #e3f2fd;
+            color: var(--primary);
+        }
+        
+        .view-btn:hover {
+            background-color: #bbdefb;
+        }
+        
+        /* 数据管理按钮 */
+        .data-management {
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .data-btn {
+            background: var(--warning);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+        
+        .data-btn:hover {
+            background-color: #e0a800;
+        }
+        
+        .data-btn.import {
+            background: var(--primary);
+        }
+        
+        .data-btn.import:hover {
+            background-color: #004085;
+        }
+        
+        /* 响应式样式 */
+        @media (max-width: 992px) {
+            .about-content, .info-container {
+                flex-direction: column;
+            }
+            
+            .about-image, .info-text {
+                width: 100%;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .advantages-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero {
+                padding: 120px 20px 200px;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .admin-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .admin-header-actions {
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+            }
+            
+            .filter-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .advantages-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            .hero {
+                padding: 100px 20px 180px;
+            }
+            
+            .admin-content {
+                width: 95%;
+                padding: 15px;
+            }
+            
+            .data-table {
+                font-size: 0.9rem;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 8px 10px;
+            }
+            
+            .action-btn {
+                padding: 4px 8px;
+                font-size: 0.8rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .gallery-item-image {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="lang-switch">
+            <button class="lang-btn active" data-lang="cn">中文</button>
+        </div>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-industry"></i>
+                </div>
+                <div>
+                    <div class="logo-text">精工管件</div>
+                    <div class="logo-subtext">专业消防管件系统供应商</div>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about">关于我们 <span class="english-text">(About Us)</span></a></li>
+                    <li><a href="#products">产品中心 <span class="english-text">(Product Center)</span></a></li>
+                    <li><a href="#advantages">核心优势 <span class="english-text">(Core Advantages)</span></a></li>
+                    <li><a href="#information">联系我们 <span class="english-text">(Contact Us)</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>专业消防管件供应商</h1>
+            <h1><span class="english-text">(Professional Plumbing & Fire Pipe Supplier)</span></h1>
+            
+            <p>15年行业经验，提供高品质管件系统解决方案</p>
+            
+            <!-- 添加跳转到联系我们的互动按钮 -->
+            <a href="#information" class="cta-button">立即咨询 <span class="english-text">(Contact Us Now)</span></a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="about-title">关于我们 <span class="english-text">(About Us)</span></h2>
+                <p>专注水暖与消防管件领域，致力于提供高品质产品与服务</p>
+                <p><span class="english-text">(Focused on plumbing and fire pipe fittings, committed to providing high-quality products and services)</span></p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>用心做好产品，服务创造价值</h3>
+                    <p>自2013年成立以来，我们一直专注于水暖管件和消防管件的生产和销售，产品广泛用于建筑给排水、市政工程、消防系统等领域。</p>
+                    <p>公司拥有先进的生产设备和检测中心，严格控制产品质量，确保每件产品都达到高标准。我们的技术团队由经验丰富的专家组成，不断开发新产品和改进现有产品。</p>
+                    <p>在全国多个城市设有服务中心，能快速响应客户需求。我们的产品已用于全国众多建筑项目，并获得客户好评。</p>
+                    <p>未来，我们将继续坚持"精工铸就品质"的理念，为客户提供更好的产品和服务，成为行业内值得信赖的供应商。</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="现代化管件生产车间">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <div class="section-header">
+                <h2>产品中心 <span class="english-text">(Product Center)</span></h2>
+                <p>全系列水暖与消防管件产品，满足各类工程需求</p>
+                <p><span class="english-text">(Complete range of plumbing and fire pipe products for various engineering needs)</span></p>
+            </div>
+            
+            <div class="products-grid">
+                <!-- 消防管件 -->
+                <div class="product-card">
+                    <div class="product-card-header" style="background-image: url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'); background-color: var(--fire-red);">
+                        <h3>消防管件<span class="english-text">(Fire Pipe System)</span></h3>
+                        <p>精密铸造 · 高效流通 <span class="english-text">(Precision Casting · Efficient Flow)</span></p>
+                    </div>
+                    <div class="product-card-body">
+                        <h4><i class="fas fa-faucet"></i> 阀门系列 <span class="english-text">(Valve Series)</span></h4>
+                        <p><strong>主要产品：</strong>闸阀、球阀、截止阀、止回阀、蝶阀 <span class="english-text">(Main Products: Gate Valve, Ball Valve, Globe Valve, Check Valve, Butterfly Valve)</span></p>
+                        <ul class="features-list">
+                            <li>DN15-DN300全系列规格 <span class="english-text">(DN15-DN300 full range specifications)</span></li>
+                            <li>材质可选：铸铁、球墨铸铁、不锈钢 <span class="english-text">(Materials: Cast Iron, Ductile Iron, Stainless Steel)</span></li>
+                            <li>适用压力：1.6MPa-6.4MPa <span class="english-text">(Working Pressure: 1.6MPa-6.4MPa)</span></li>
+                        </ul>
+                        
+                        <h4><i class="fas fa-link"></i> 管件连接件 <span class="english-text">(Pipe Fittings)</span></h4>
+                        <p><strong>主要产品：</strong>弯头、三通、四通、异径管、法兰 <span class="english-text">(Main Products: Elbow, Tee, Cross, Reducer, Flange)</span></p>
+                        <ul class="features-list">
+                            <li>内壁精细抛光处理，提升水流效率 <span class="english-text">(Precision polished inner wall for improved water flow efficiency)</span></li>
+                            <li>适用于饮用水管道和工业管道 <span class="english-text">(Suitable for drinking water and industrial pipelines)</span></li>
+                            <li>符合国家卫生标准要求 <span class="english-text">(Complies with national health standards)</span></li>
+                        </ul>
+                        
+                        <div class="specs">
+                            <p><strong>适用领域：</strong>建筑给排水 | 暖通空调 | 市政工程 | 工业管道 <span class="english-text">(Applications: Building Water Supply | HVAC | Municipal Engineering | Industrial Piping)</span></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 定制管件解决方案 -->
+                <div class="product-card">
+                    <div class="product-card-header" style="background-image: url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'); background-color: var(--fire-red);">
+                        <h3>定制管件解决方案 <span class="english-text">(Custom Pipe Solutions)</span></h3>
+                        <p>专业定制 · 满足特殊需求 <span class="english-text">(Professional Customization · Meet Special Needs)</span></p>
+                    </div>
+                    <div class="product-card-body">
+                        <h4><i class="fas fa-lightbulb"></i> 特殊材质管件 <span class="english-text">(Special Material Pipes)</span></h4>
+                        <ul class="features-list">
+                            <li>不锈钢、铜合金、钛合金等特殊材质 <span class="english-text">(Special materials: Stainless Steel, Copper Alloy, Titanium Alloy)</span></li>
+                            <li>耐腐蚀、耐高温、耐低温特殊环境 <span class="english-text">(Corrosion-resistant, high-temperature, low-temperature environments)</span></li>
+                            <li>按照客户图纸定制生产 <span class="english-text">(Custom production according to customer drawings)</span></li>
+                        </ul>
+                        
+                        <h4><i class="fas fa-cogs"></i> 异形管件加工 <span class="english-text">(Special-shaped Pipe Processing)</span></h4>
+                        <ul class="features-list">
+                            <li>非标准尺寸、特殊形状管件定制 <span class="english-text">(Non-standard size, special shape pipe customization)</span></li>
+                            <li>精密铸造、锻造、焊接工艺可选 <span class="english-text">(Precision casting, forging, welding processes available)</span></li>
+                            <li>提供完整的检测报告 <span class="english-text">(Provide complete inspection reports)</span></li>
+                        </ul>
+                        
+                        <div class="specs">
+                            <p><strong>定制流程：</strong>需求分析 → 方案设计 → 样品制作 → 测试验证 → 批量生产 <span class="english-text">(Custom Process: Requirement Analysis → Design → Sample → Testing → Mass Production)</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 产品图片展示区域 -->
+            <div class="product-gallery">
+                <div class="product-gallery-header">
+                    <h3>消防管件产品展示</h3>
+                    <p>精选优质产品，满足各类工程需求</p>
+                </div>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <div class="gallery-item-image">
+                            <img src="https://space.coze.cn/s/020rMwPVYVk/?width_height=1706x1279" alt="消防管件连接件">
+                        </div>
+                        <div class="gallery-item-name">
+                            <h4>消防管件连接件</h4>
+                            <p>红色金属管件，带螺栓和圆形开口</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <div class="gallery-item-image">
+                            <img src="https://space.coze.cn/s/1QtdEm2enME/?width_height=1706x1279" alt="三通管件">
+                        </div>
+                        <div class="gallery-item-name">
+                            <h4>三通管件</h4>
+                            <p>红色T形管件，印有XGQT03-89-2.5字样</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <div class="gallery-item-image">
+                            <img src="https://space.coze.cn/s/1kW3yNmNBmc/?width_height=1706x1279" alt="管道卡箍">
+                        </div>
+                        <div class="gallery-item-name">
+                            <h4>管道卡箍</h4>
+                            <p>红色卡箍，带黑色橡胶衬垫和螺栓</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <div class="gallery-item-image">
+                            <img src="https://space.coze.cn/s/16k7GhRLx7I/?width_height=1706x1279" alt="90度弯头">
+                        </div>
+                        <div class="gallery-item-name">
+                            <h4>90度弯头</h4>
+                            <p>红色弯头，印有XGQT01-76字样</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <div class="gallery-item-image">
+                            <img src="https://space.coze.cn/s/2RWRcQK0mUw/?width_height=1706x1279" alt="圆盘形管件">
+                        </div>
+                        <div class="gallery-item-name">
+                            <h4>圆盘形管件</h4>
+                            <p>红色圆盘形管件，带圆柱形接口和安装孔</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages Section -->
+    <section id="advantages" class="advantages">
+        <div class="container">
+            <div class="section-header">
+                <h2>核心优势 <span class="english-text">(Core Advantages)</span></h2>
+                <p>我们的优势，您的放心之选</p>
+                <p><span class="english-text">(Our Advantages, Your Trusted Choice)</span></p>
+            </div>
+            <div class="advantages-grid">
+                <!-- Advantage 1 -->
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>技术创新 <span class="english-text">(Technological Innovation)</span></h3>
+                    <p>拥有多项管件领域专利技术，持续研发投入，提升产品性能 <span class="english-text">(Multiple patents in pipe fittings, continuous R&D investment to improve product performance)</span></p>
+                </div>
+                
+                <!-- Advantage 2 -->
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>卓越品质 <span class="english-text">(Excellent Quality)</span></h3>
+                    <p>全流程质量管控，关键部件100%检测，产品寿命长 <span class="english-text">(Full-process quality control, 100% inspection of key components, long product life)</span></p>
+                </div>
+                
+                <!-- Advantage 3 -->
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-truck-fast"></i>
+                    </div>
+                    <h3>快速交付 <span class="english-text">(Fast Delivery)</span></h3>
+                    <p>全国六大仓储中心，常规产品24小时发货，定制产品7-15天交付 <span class="english-text">(Six national warehouses, regular products shipped within 24 hours, custom products in 7-15 days)</span></p>
+                </div>
+                
+                <!-- Advantage 4 -->
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <h3>专业服务 <span class="english-text">(Professional Service)</span></h3>
+                    <p>专业技术团队提供选型指导、安装支持、售后维护全流程服务 <span class="english-text">(Professional team provides selection guidance, installation support, after-sales service)</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Information Section -->
+    <section id="information" class="information">
+        <div class="container">
+            <div class="section-header">
+                <h2>联系我们 <span class="english-text">(Contact Us)</span></h2>
+                <p>填写以下信息，我们将为您提供专业的产品选型建议和技术支持</p>
+                <p><span class="english-text">(Fill in the form below, we will provide professional product selection advice and technical support)</span></p>
+            </div>
+            <div class="info-container">
+                <div class="info-form">
+                    <form id="contactForm" class="simplified-form">
+                        <h3 style="margin-bottom: 20px; text-align: center;">客户信息登记 <span class="english-text">(Customer Information Registration)</span></h3>
+                        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="name">姓名 <span class="english-text">(Name)</span></label>
+                                    <input type="text" id="name" class="form-control" placeholder="请输入您的姓名" required>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="company">公司名称 <span class="english-text">(Company)</span></label>
+                                    <input type="text" id="company" class="form-control" placeholder="请输入公司全称" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="phone">联系电话 <span class="english-text">(Phone)</span></label>
+                                    <input type="tel" id="phone" class="form-control" placeholder="请输入联系电话" required>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="email">电子邮箱 <span class="english-text">(Email)</span></label>
+                                    <input type="email" id="email" class="form-control" placeholder="请输入电子邮箱" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="industry">所属行业 <span class="english-text">(Industry)</span></label>
+                                    <select id="industry" class="form-control" required>
+                                        <option value="">请选择行业 <span class="english-text">(Select Industry)</span></option>
+                                        <option value="construction">建筑工程 <span class="english-text">(Construction Engineering)</span></option>
+                                        <option value="municipal">市政工程 <span class="english-text">(Municipal Engineering)</span></option>
+                                        <option value="property">房地产开发 <span class="english-text">(Real Estate Development)</span></option>
+                                        <option value="fire">消防工程 <span class="english-text">(Fire Engineering)</span></option>
+                                        <option value="hvac">暖通空调 <span class="english-text">(HVAC)</span></option>
+                                        <option value="plumbing">给排水工程 <span class="english-text">(Plumbing Engineering)</span></option>
+                                        <option value="other">其他 <span class="english-text">(Other)</span></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="product">感兴趣的产品 <span class="english-text">(Interested Product)</span></label>
+                                    <select id="product" class="form-control" required>
+                                        <option value="">请选择产品 <span class="english-text">(Select Product)</span></option>
+                                        <optgroup label="消防管件类 <span class="english-text">(Fire Fittings)</span>">
+                                          <option value="Rigid clamp">刚性卡箍 <span class="english-text">(Gate Valve)</span></option>
+                                          <option value="conversion flange">转换法兰 <span class="english-text">(Ball Valve)</span></option>
+                                          <option value="positive tee">正三通 <span class="english-text">(Check Valve)</span></option>
+                                          <option value="90 elbow">90弯头 <span class="english-text">(Elbow Fitting)</span></option>
+                                          <option value="45 elbow">45弯头 <span class="english-text">(Tee Fitting)</span></option>
+                                          <option value="pipe">直管系列 <span class="english-text">(Straight Pipe)</span></option>
+                                          <option value="S machine three">S机三 <span class="english-text">(Fire Hydrant)</span></option>
+                                          <option value="G machine three">G机三 <span class="english-text">(Fire Valve)</span></option>
+                                          <option value="G different tee">G异三通 <span class="english-text">(Fire Pipe)</span></option>
+                                          <option value=""S different tee">S异三通 <span class="english-text">(Alarm Valve Set)</span></option>
+                                          <option value="S different four links">S异四通 <span class="english-text">(Fire Accessories)</span></option>
+                                          <option value="Flange connection">法兰接盘 <span class="english-text">(Fire Hydrant)</span></option>
+                                        </optgroup>
+                                        <optgroup label="定制解决方案 <span class="english-text">(Custom Solutions)</span>">
+                                            <option value="custom_material">特殊材质管件 <span class="english-text">(Special Material Pipes)</span></option>
+                                            <option value="custom_shape">异形管件定制 <span class="english-text">(Special-shaped Fittings)</span></option>
+                                            <option value="system_solution">系统解决方案 <span class="english-text">(System Solutions)</span></option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="requirements">具体需求描述 <span class="english-text">(Requirements Description)</span></label>
+                            <textarea id="requirements" class="form-control" placeholder="请简要描述您的应用场景、技术要求、特殊需求等信息 (Please briefly describe your application scenario, technical requirements, special needs, etc.)"></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">提交信息 <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+                
+                <div class="info-text">
+                    <h3>为什么选择我们 <span class="english-text">(Why Choose Us)</span></h3>
+                    <ul class="info-list">
+                        <li><strong>专业团队支持</strong> - 经验丰富的技术工程师提供选型建议 <span class="english-text">(Professional Team - Experienced engineers provide selection advice)</span></li>
+                        <li><strong>质量保证体系</strong> - 从原材料到成品的全程质量监控 <span class="english-text">(Quality Assurance - Full quality control from raw materials to finished products)</span></li>
+                        <li><strong>快速响应机制</strong> - 24小时内响应客户咨询与需求 <span class="english-text">(Quick Response - Respond to customer inquiries within 24 hours)</span></li>
+                        <li><strong>定制化解决方案</strong> - 根据客户特殊需求提供专业解决方案 <span class="english-text">(Custom Solutions - Professional solutions for special needs)</span></li>
+                        <li><strong>完善售后服务</strong> - 提供安装指导和技术支持 <span class="english-text">(After-sales Service - Installation guidance and technical support)</span></li>
+                    </ul>
+
+                    <h3 style="margin-top: 40px;">我们的承诺</h3>
+                    <p>我们承诺对所有客户信息严格保密，仅用于提供更好的产品服务和技术支持。提交信息后，我们的专业工程师将在24小时内与您联系，为您提供定制化的解决方案。</p>
+                    
+                    <div class="contact-info" style="margin-top: 30px;">
+                        <li><i class="fas fa-phone"></i> 技术支持热线: +86 16665667676</li>
+                        <li><i class="fas fa-envelope"></i> 技术支持邮箱: luoy40795@gmail.com</li>
+                        <li><i class="fas fa-clock"></i> 服务时间: 周一至周日 8:30 - 19:30，24小时回应</li>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>关于我们 <span class="english-text">(About Us)</span></h4>
+                    <p>成立于2013年，专注于水暖管件和消防管件系统的研发制造，为客户提供高品质的产品和服务，致力于为全球工业客户提供安全可靠的核心部件供应。</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>快速链接 <span class="english-text">(Quick Links)</span></h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">公司简介 <span class="english-text">(Company Profile)</span></a></li>
+                        <li><a href="#products">产品体系 <span class="english-text">(Product System)</span></a></li>
+                        <li><a href="#advantages">技术优势 <span class="english-text">(Technical Advantages)</span></a></li>
+                        <li><a href="#information">信息登记 <span class="english-text">(Information Registration)</span></a></li>
+                        <li><a href="#">应用案例 <span class="english-text">(Application Cases)</span></a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>联系方式 <span class="english-text">(Contact Information)</span></h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 中国山东省青岛市市南区</li>
+                        <li><i class="fas fa-phone"></i> +86 16665667676</li>
+                        <li><i class="fas fa-envelope"></i> luoy40795@gmail.com</li>
+                        <li><i class="fas fa-clock"></i> 周一至周日 8:30 - 19:30</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>关注我们 <span class="english-text">(Follow Us)</span></h4>
+                    <p>获取最新产品信息和技术动态 <span class="english-text">(Get the latest product information and technical updates)</span></p>
+                    <div style="margin-top: 15px;">
+                        <a href="#" style="color: #fff; margin-right: 15px; font-size: 1.5rem;"><i class="fab fa-weixin"></i></a>
+                        <a href="#" style="color: #fff; margin-right: 15px; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" style="color: #fff; margin-right: 15px; font-size: 1.5rem;"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 精工铸就生命线工业科技有限公司 版权所有 | 沪ICP备12345678号 
+            </div>
+        </div>
+    </footer>
+
+    <!-- 管理员入口按钮 -->
+    <div class="admin-float-btn" id="adminBtn">
+        <i class="fas fa-users-cog"></i>
+    </div>
+
+    <!-- 管理员登录模态框 -->
+    <div class="login-modal" id="loginModal">
+        <div class="login-content">
+            <div class="login-header">
+                <i class="fas fa-lock"></i>
+                <h2>管理员登录</h2>
+                <p>请输入管理员密码</p>
+            </div>
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label for="adminPassword">管理员密码</label>
+                    <input type="password" id="adminPassword" class="form-control" placeholder="请输入密码" required>
+                </div>
+                <button type="submit" class="login-btn">登录 <i class="fas fa-sign-in-alt"></i></button>
+                <div class="login-error" id="loginError">密码错误，请重试</div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 管理员系统模态框 -->
+    <div class="admin-modal" id="adminModal">
+        <div class="admin-content">
+            <div class="admin-header">
+                <div class="admin-header-title">
+                    <i class="fas fa-users-cog"></i>
+                    <h2>客户信息管理系统</h2>
+                </div>
+                <div class="admin-header-actions">
+                    <button class="close-admin" id="closeAdminBtn">&times;</button>
+                </div>
+            </div>
+            
+            <div class="data-management">
+                <button class="data-btn" id="exportDataBtn">
+                    <i class="fas fa-download"></i> 导出数据
+                </button>
+                <button class="data-btn import" id="importDataBtn">
+                    <i class="fas fa-upload"></i> 导入数据
+                </button>
+                <input type="file" id="importFileInput" accept=".json" style="display: none;">
+            </div>
+            
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h3>总客户数</h3>
+                    <div class="stat-value" id="totalCustomers">0</div>
+                    <div class="stat-desc">条客户记录</div>
+                </div>
+                <div class="stat-card">
+                    <h3>建筑工程行业</h3>
+                    <div class="stat-value" id="constructionCount">0</div>
+                    <div class="stat-desc">占比 <span id="constructionPercent">0%</span></div>
+                </div>
+                <div class="stat-card">
+                    <h3>消防工程行业</h3>
+                    <div class="stat-value" id="fireCount">0</div>
+                    <div class="stat-desc">占比 <span id="firePercent">0%</span></div>
+                </div>
+                <div class="stat-card">
+                    <h3>热门产品</h3>
+                    <div class="stat-value" id="topProduct">-</div>
+                    <div class="stat-desc">最受关注产品</div>
+                </div>
+            </div>
+            
+            <div class="tabs">
+                <div class="tab active" data-tab="list">客户列表</div>
+                <div class="tab" data-tab="statistics">统计分析</div>
+            </div>
+            
+            <div class="tab-content active" id="list">
+                <div class="filter-container">
+                    <div class="filter-group">
+                        <label for="industryFilter">行业筛选:</label>
+                        <select id="industryFilter">
+                            <option value="">全部行业</option>
+                            <option value="construction">建筑工程</option>
+                            <option value="municipal">市政工程</option>
+                            <option value="property">房地产开发</option>
+                            <option value="fire">消防工程</option>
+                            <option value="hvac">暖通空调</option>
+                            <option value="plumbing">给排水工程</option>
+                            <option value="other">其他</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="productFilter">产品筛选:</label>
+                        <select id="productFilter">
+                            <option value="">全部产品</option>
+                            <option value="Rigid clamp">刚性卡箍</option>
+                            <option value="conversion flange">转换法兰</option>
+                            <option value="conversion flange">正三通</option>
+                            <option value="90 elbow">90弯头</option>
+                            <option value="45 elbow">45弯头</option>
+                            <option value="pipe">直管系列</option>
+                            <option value="S machine three">S机三</option>
+                            <option value="G machine three">G机三</option>
+                            <option value="G different tee">G异三通</option>
+                            <option value="S different tee">S异三通</option>
+                            <option value="S different four links">S异四通</option>
+                            <option value="Flange connection">法兰接盘</option>
+                            <option value="custom_material">特殊材质管件</option>
+                            <option value="custom_shape">异形管件定制</option>
+                            <option value="system_solution">系统解决方案</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="searchFilter">搜索:</label>
+                        <input type="text" id="searchFilter" placeholder="姓名/公司/电话">
+                    </div>
+                </div>
+                
+                <div class="download-container">
+                    <button class="download-btn" id="downloadBtn">
+                        <i class="fas fa-download"></i> 导出客户数据(CSV)
+                    </button>
+                </div>
+                
+                <table class="data-table" id="customerTable">
+                    <thead>
+                        <tr>
+                            <th>提交时间</th>
+                            <th>姓名</th>
+                            <th>公司</th>
+                            <th>行业</th>
+                            <th>感兴趣产品</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="customerTableBody">
+                        <!-- 客户数据将通过JavaScript动态生成 -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="tab-content" id="statistics">
+                <div class="chart-container">
+                    <canvas id="industryChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="productChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 客户详情模态框 -->
+    <div class="detail-modal" id="detailModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeDetailModal">&times;</span>
+            <div class="modal-header">
+                <h3>客户详情</h3>
+            </div>
+            <div class="detail-grid">
+                <div class="detail-item">
+                    <div class="detail-label">提交时间</div>
+                    <div class="detail-value" id="detailTime"></div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">姓名</div>
+                    <div class="detail-value" id="detailName"></div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">公司名称</div>
+                    <div class="detail-value" id="detailCompany"></div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">联系电话</div>
+                    <div class="detail-value" id="detailPhone"></div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">电子邮箱</div>
+                    <div class="detail-value" id="detailEmail"></div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">所属行业</div>
+                    <div class="detail-value" id="detailIndustry"></div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">感兴趣产品</div>
+                    <div class="detail-value" id="detailProduct"></div>
+                </div>
+                <div class="detail-item detail-full">
+                    <div class="detail-label">具体需求描述</div>
+                    <div class="detail-value" id="detailRequirements"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // 管理员登录功能
+        const adminBtn = document.getElementById('adminBtn');
+        const loginModal = document.getElementById('loginModal');
+        const adminModal = document.getElementById('adminModal');
+        const loginForm = document.getElementById('loginForm');
+        const adminPassword = document.getElementById('adminPassword');
+        const loginError = document.getElementById('loginError');
+        const closeAdminBtn = document.getElementById('closeAdminBtn');
+        
+        // 默认管理员密码
+        const DEFAULT_PASSWORD = 'jinggong232689';
+        
+        // 打开登录模态框
+        adminBtn.addEventListener('click', function() {
+            loginModal.classList.add('active');
+            adminPassword.focus();
+        });
+        
+        // 关闭登录模态框
+        loginModal.addEventListener('click', function(e) {
+            if (e.target === loginModal) {
+                loginModal.classList.remove('active');
+                loginError.style.display = 'none';
+                loginForm.reset();
+            }
+        });
+        
+        // 处理登录表单提交
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (adminPassword.value === DEFAULT_PASSWORD) {
+                // 密码正确，打开管理系统
+                loginModal.classList.remove('active');
+                adminModal.classList.add('active');
+                loginError.style.display = 'none';
+                
+                // 加载数据
+                renderCustomerTable();
+                updateStatistics();
+                if (customerData.length > 0 && !window.industryChart) {
+                    initCharts();
+                }
+            } else {
+                // 密码错误
+                loginError.style.display = 'block';
+                adminPassword.select();
+            }
+        });
+        
+        // 关闭管理员模态框
+        closeAdminBtn.addEventListener('click', function() {
+            adminModal.classList.remove('active');
+        });
+        
+        window.addEventListener('click', function(e) {
+            if (e.target === adminModal) {
+                adminModal.classList.remove('active');
+            }
+        });
+        
+        // 关于我们标题点击事件 - 平滑滚动到关于我们区域
+        document.getElementById('about-title').addEventListener('click', function() {
+            document.getElementById('about').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+        
+        // 客户表单提交处理
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // 获取表单数据
+                const formData = {
+                    id: Date.now(), // 使用时间戳作为唯一ID
+                    submitTime: new Date().toLocaleString(),
+                    name: document.getElementById('name').value,
+                    company: document.getElementById('company').value,
+                    phone: document.getElementById('phone').value,
+                    email: document.getElementById('email').value,
+                    industry: document.getElementById('industry').value,
+                    product: document.getElementById('product').value,
+                    requirements: document.getElementById('requirements').value
+                };
+                
+                // 保存到localStorage
+                let customerData = JSON.parse(localStorage.getItem('customerData')) || [];
+                customerData.push(formData);
+                localStorage.setItem('customerData', JSON.stringify(customerData));
+                
+                // 重置表单
+                contactForm.reset();
+                
+                // 显示成功消息
+                alert('提交成功！我们将尽快与您联系。');
+                
+                // 更新管理员界面数据（如果管理员界面已打开）
+                if (adminModal.classList.contains('active')) {
+                    renderCustomerTable();
+                    updateStatistics();
+                    if (window.industryChart) {
+                        window.industryChart.destroy();
+                        window.productChart.destroy();
+                        initCharts();
+                    }
+                }
+            });
+        }
+        
+        // 客户管理系统功能
+        let customerData = JSON.parse(localStorage.getItem('customerData')) || [];
+        const industryMap = {
+            'construction': '建筑工程',
+            'municipal': '市政工程',
+            'property': '房地产开发',
+            'fire': '消防工程',
+            'hvac': '暖通空调',
+            'plumbing': '给排水工程',
+            'other': '其他'
+        };
+        
+        const productMap = {
+            'Rigid clamp': '刚性卡箍',
+            'conversion flange': '转换法兰',
+            'positive tee': '正三通',
+            '90 elbow': '90弯头',
+            '45 elbow': '45弯头',
+            'pipe': '直管系列',
+            'S machine three': 'S机三',
+            'G machine three': 'G机三',
+            'G different tee': 'G异三通',
+            'S different tee': 'S异三通',
+            'Flange connection': '法兰接盘',
+            'custom_material': '特殊材质管件',
+            'custom_shape': '异形管件定制',
+            'system_solution': '系统解决方案'
+        };
+        
+        // DOM元素
+        const customerTableBody = document.getElementById('customerTableBody');
+        const totalCustomersEl = document.getElementById('totalCustomers');
+        const constructionCountEl = document.getElementById('constructionCount');
+        const constructionPercentEl = document.getElementById('constructionPercent');
+        const fireCountEl = document.getElementById('fireCount');
+        const firePercentEl = document.getElementById('firePercent');
+        const topProductEl = document.getElementById('topProduct');
+        const industryFilter = document.getElementById('industryFilter');
+        const productFilter = document.getElementById('productFilter');
+        const searchFilter = document.getElementById('searchFilter');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const detailModal = document.getElementById('detailModal');
+        const closeDetailModal = document.getElementById('closeDetailModal');
+        const exportDataBtn = document.getElementById('exportDataBtn');
+        const importDataBtn = document.getElementById('importDataBtn');
+        const importFileInput = document.getElementById('importFileInput');
+        
+        // 初始化页面
+        document.addEventListener('DOMContentLoaded', function() {
+            // 标签切换
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // 更新活动标签
+                    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // 更新活动内容
+                    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                    document.getElementById(tabId).classList.add('active');
+                    
+                    // 如果切换到统计标签且图表未初始化，则初始化图表
+                    if (tabId === 'statistics' && customerData.length > 0 && !window.industryChart) {
+                        initCharts();
+                    }
+                });
+            });
+            
+            // 筛选器事件监听
+            industryFilter.addEventListener('change', renderCustomerTable);
+            productFilter.addEventListener('change', renderCustomerTable);
+            searchFilter.addEventListener('input', renderCustomerTable);
+            
+            // 下载按钮事件
+            downloadBtn.addEventListener('click', downloadCustomerData);
+            
+            // 数据导出导入按钮
+            exportDataBtn.addEventListener('click', exportCustomerData);
+            importDataBtn.addEventListener('click', function() {
+                importFileInput.click();
+            });
+            importFileInput.addEventListener('change', importCustomerData);
+            
+            // 关闭详情模态框
+            closeDetailModal.addEventListener('click', function() {
+                detailModal.style.display = 'none';
+            });
+            
+            window.addEventListener('click', function(e) {
+                if (e.target === detailModal) {
+                    detailModal.style.display = 'none';
+                }
+            });
+        });
+        
+        // 渲染客户表格
+        function renderCustomerTable() {
+            customerTableBody.innerHTML = '';
+            
+            // 获取筛选值
+            const industryValue = industryFilter.value;
+            const productValue = productFilter.value;
+            const searchValue = searchFilter.value.toLowerCase();
+            
+            // 应用筛选
+            const filteredData = customerData.filter(customer => {
+                const matchesIndustry = !industryValue || customer.industry === industryValue;
+                const matchesProduct = !productValue || customer.product === productValue;
+                const matchesSearch = !searchValue || 
+                    customer.name.toLowerCase().includes(searchValue) ||
+                    customer.company.toLowerCase().includes(searchValue) ||
+                    customer.phone.toLowerCase().includes(searchValue);
+                
+                return matchesIndustry && matchesProduct && matchesSearch;
+            });
+            
+            // 如果没有数据
+            if (filteredData.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = '<td colspan="6" style="text-align: center; padding: 40px;">暂无客户数据</td>';
+                customerTableBody.appendChild(row);
+                return;
+            }
+            
+            // 渲染表格行
+            filteredData.forEach(customer => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${customer.submitTime}</td>
+                    <td>${customer.name}</td>
+                    <td>${customer.company}</td>
+                    <td>${industryMap[customer.industry] || customer.industry}</td>
+                    <td>${productMap[customer.product] || customer.product}</td>
+                    <td>
+                        <button class="action-btn view-btn" data-id="${customer.id}">
+                            <i class="fas fa-eye"></i> 查看
+                        </button>
+                    </td>
+                `;
+                customerTableBody.appendChild(row);
+                
+                // 查看按钮事件
+                row.querySelector('.view-btn').addEventListener('click', function() {
+                    const customerId = parseInt(this.getAttribute('data-id'));
+                    showCustomerDetail(customerId);
+                });
+            });
+        }
+        
+        // 显示客户详情
+        function showCustomerDetail(id) {
+            const customer = customerData.find(c => c.id === id);
+            if (!customer) return;
+            
+            // 填充详情数据
+            document.getElementById('detailTime').textContent = customer.submitTime;
+            document.getElementById('detailName').textContent = customer.name;
+            document.getElementById('detailCompany').textContent = customer.company;
+            document.getElementById('detailPhone').textContent = customer.phone;
+            document.getElementById('detailEmail').textContent = customer.email;
+            document.getElementById('detailIndustry').textContent = industryMap[customer.industry] || customer.industry;
+            document.getElementById('detailProduct').textContent = productMap[customer.product] || customer.product;
+            document.getElementById('detailRequirements').textContent = customer.requirements || '无';
+            
+            // 显示模态框
+            detailModal.style.display = 'flex';
+        }
+        
+        // 更新统计数据
+        function updateStatistics() {
+            const total = customerData.length;
+            totalCustomersEl.textContent = total;
+            
+            if (total === 0) {
+                constructionCountEl.textContent = '0';
+                constructionPercentEl.textContent = '0%';
+                fireCountEl.textContent = '0';
+                firePercentEl.textContent = '0%';
+                topProductEl.textContent = '-';
+                return;
+            }
+            
+            // 按行业统计
+            const industryCounts = {};
+            customerData.forEach(customer => {
+                industryCounts[customer.industry] = (industryCounts[customer.industry] || 0) + 1;
+            });
+            
+            // 建筑工程行业统计
+            const constructionCount = industryCounts.construction || 0;
+            constructionCountEl.textContent = constructionCount;
+            constructionPercentEl.textContent = `${Math.round((constructionCount / total) * 100)}%`;
+            
+            // 消防工程行业统计
+            const fireCount = industryCounts.fire || 0;
+            fireCountEl.textContent = fireCount;
+            firePercentEl.textContent = `${Math.round((fireCount / total) * 100)}%`;
+            
+            // 热门产品统计
+            const productCounts = {};
+            customerData.forEach(customer => {
+                productCounts[customer.product] = (productCounts[customer.product] || 0) + 1;
+            });
+            
+            let topProduct = '';
+            let maxCount = 0;
+            for (const product in productCounts) {
+                if (productCounts[product] > maxCount) {
+                    maxCount = productCounts[product];
+                    topProduct = product;
+                }
+            }
+            
+            topProductEl.textContent = productMap[topProduct] || topProduct || '-';
+        }
+        
+        // 初始化统计图表
+        function initCharts() {
+            // 确保Chart库已加载
+            if (typeof Chart === 'undefined') {
+                console.error('Chart.js未加载');
+                return;
+            }
+            
+            // 行业分布图表
+            const industryCtx = document.getElementById('industryChart').getContext('2d');
+            
+            // 准备行业数据
+            const industryCounts = {};
+            customerData.forEach(customer => {
+                industryCounts[customer.industry] = (industryCounts[customer.industry] || 0) + 1;
+            });
+            
+            const industryLabels = [];
+            const industryData = [];
+            const industryColors = [
+                '#007bff', '#28a745', '#ffc107', '#dc3545', '#17a2b8', '#6610f2', '#fd7e14'
+            ];
+            
+            for (const industry in industryCounts) {
+                if (industry) { // 跳过空值
+                    industryLabels.push(industryMap[industry] || industry);
+                    industryData.push(industryCounts[industry]);
+                }
+            }
+            
+            window.industryChart = new Chart(industryCtx, {
+                type: 'pie',
+                data: {
+                    labels: industryLabels,
+                    datasets: [{
+                        label: '客户行业分布',
+                        data: industryData,
+                        backgroundColor: industryColors.slice(0, industryLabels.length),
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        },
+                        title: {
+                            display: true,
+                            text: '客户行业分布'
+                        }
+                    }
+                }
+            });
+            
+            // 产品需求图表
+            const productCtx = document.getElementById('productChart').getContext('2d');
+            
+            // 准备产品数据
+            const productCounts = {};
+            customerData.forEach(customer => {
+                productCounts[customer.product] = (productCounts[customer.product] || 0) + 1;
+            });
+            
+            // 获取前5个热门产品
+            const topProducts = Object.entries(productCounts)
+                .filter(([product]) => product) // 跳过空值
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 5);
+            
+            const productLabels = topProducts.map(([product]) => productMap[product] || product);
+            const productData = topProducts.map(([_, count]) => count);
+            
+            window.productChart = new Chart(productCtx, {
+                type: 'bar',
+                data: {
+                    labels: productLabels,
+                    datasets: [{
+                        label: '产品需求数量',
+                        data: productData,
+                        backgroundColor: '#007bff',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                precision: 0
+                            }
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '热门产品需求'
+                        }
+                    }
+                }
+            });
+        }
+        
+        // 下载客户数据为CSV
+        function downloadCustomerData() {
+            if (customerData.length === 0) {
+                alert('没有可导出的客户数据');
+                return;
+            }
+            
+            // CSV头部
+            let csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += "提交时间,姓名,公司名称,联系电话,电子邮箱,行业,感兴趣产品,需求描述\n";
+            
+            // CSV数据行
+            customerData.forEach(customer => {
+                const row = [
+                    customer.submitTime,
+                    `"${customer.name}"`,
+                    `"${customer.company}"`,
+                    customer.phone,
+                    customer.email,
+                    industryMap[customer.industry] || customer.industry,
+                    productMap[customer.product] || customer.product,
+                    `"${customer.requirements || ''}"`
+                ];
+                csvContent += row.join(',') + "\n";
+            });
+            
+            // 创建下载链接
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `客户数据_${new Date().toLocaleDateString()}.csv`);
+            document.body.appendChild(link);
+            
+            // 触发下载
+            link.click();
+            
+            // 清理
+            document.body.removeChild(link);
+        }
+        
+        // 导出客户数据为JSON
+        function exportCustomerData() {
+            if (customerData.length === 0) {
+                alert('没有可导出的客户数据');
+                return;
+            }
+            
+            const dataStr = JSON.stringify(customerData, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement("a");
+            link.setAttribute("href", url);
+            link.setAttribute("download", `客户数据_${new Date().toLocaleDateString()}.json`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }
+        
+        // 导入客户数据
+        function importCustomerData(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const importedData = JSON.parse(e.target.result);
+                    if (!Array.isArray(importedData)) {
+                        throw new Error('文件格式错误：数据不是数组');
+                    }
+                    
+                    // 合并数据并去重（根据id）
+                    const existingData = JSON.parse(localStorage.getItem('customerData')) || [];
+                    const mergedData = [...existingData, ...importedData];
+                    const uniqueData = mergedData.filter((item, index, self) => 
+                        index === self.findIndex(t => t.id === item.id)
+                    );
+                    
+                    // 保存合并后的数据
+                    localStorage.setItem('customerData', JSON.stringify(uniqueData));
+                    customerData = uniqueData;
+                    
+                    // 刷新表格和统计
+                    renderCustomerTable();
+                    updateStatistics();
+                    if (window.industryChart) {
+                        window.industryChart.destroy();
+                        window.productChart.destroy();
+                        initCharts();
+                    }
+                    
+                    alert(`导入成功！共导入${importedData.length}条数据，合并后共${uniqueData.length}条数据。`);
+                } catch (error) {
+                    alert('导入失败：' + error.message);
+                }
+            };
+            reader.readAsText(file);
+            
+            // 清空input，允许再次导入同一文件
+            event.target.value = '';
+        }
+    </script>
+</body>
+</html>
